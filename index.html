@@ -13,6 +13,8 @@
       --accent-glow: rgba(99, 102, 241, 0.25);
       --text: #f3f4f6;
       --text-muted: #9ca3af;
+      /* Font stack reverted to the original dynamic style you prefer */
+      --font-stack: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Roboto', 'Noto Sans', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
     }
 
     * {
@@ -24,7 +26,7 @@
     body {
       background-color: var(--bg);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-family: var(--font-stack);
       line-height: 1.6;
       padding: 20px;
     }
@@ -229,7 +231,8 @@
     
     <!-- Profile Header -->
     <header class="profile-header">
-      <img alt="Maimuna Tasnim Nusaiba" class="profile-img" src="https://www.researchgate.net/profile/Maimuna-Tasnim-Nusaiba/avatar" onerror="this.onerror=null; this.src='https://github.com/MTNusaiba.png';">
+      <!-- Image must be named image_2.png and uploaded to your GitHub repository -->
+      <img alt="Maimuna Tasnim Nusaiba" class="profile-img" src="image_2.png" onerror="this.onerror=null; this.src='https://github.com/MTNusaiba.png';">
       <div class="profile-info">
         <h1>Maimuna Tasnim Nusaiba</h1>
         <p><strong>Department of Computer Science &amp; Engineering</strong>, Jahangirnagar University</p>
