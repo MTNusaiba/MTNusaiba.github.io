@@ -5,18 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maimuna Tasnim Nusaiba - Portfolio</title>
   <style>
-    :root {
-      --bg: #0a0a0c;
-      --card-bg: rgba(255, 255, 255, 0.03);
-      --border: rgba(255, 255, 255, 0.08);
-      --accent: #6366f1;
-      --accent-glow: rgba(99, 102, 241, 0.25);
-      --text: #f3f4f6;
-      --text-muted: #9ca3af;
-      /* Font stack reverted to the original dynamic style you prefer */
-      --font-stack: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Roboto', 'Noto Sans', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -24,11 +12,14 @@
     }
 
     body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: var(--font-stack);
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(180deg, #fcd34d 0%, #f97316 15%, #60a5fa 40%, #3b82f6 100%);
+      background-attachment: fixed;
+      color: #1e293b;
       line-height: 1.6;
-      padding: 20px;
+      min-height: 100vh;
+      padding: 40px 20px;
     }
 
     canvas#bg-canvas {
@@ -37,24 +28,29 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      z-index: -1;
+      z-index: 0;
       pointer-events: none;
     }
 
     .container {
+      position: relative;
+      z-index: 1;
       max-width: 900px;
       margin: 0 auto;
     }
 
+    /* Profile Header Styling */
     .profile-header {
       display: flex;
       gap: 24px;
       align-items: center;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 24px;
+      padding: 32px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       margin-bottom: 24px;
     }
 
@@ -63,111 +59,125 @@
       height: 130px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid var(--accent);
-      box-shadow: 0 0 15px var(--accent-glow);
+      border: 3px solid #ffffff;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+      flex-shrink: 0;
     }
 
     .profile-info h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #ffffff;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
       margin-bottom: 4px;
     }
 
     .profile-info p {
-      color: var(--text-muted);
+      color: #334155;
       font-size: 0.95rem;
     }
 
     .domain-tag {
       display: inline-block;
-      margin-top: 8px;
-      padding: 4px 12px;
-      background: rgba(99, 102, 241, 0.15);
-      border: 1px solid var(--accent);
-      color: #a5b4fc;
+      margin-top: 10px;
+      padding: 6px 16px;
+      background: #4f46e5;
+      color: #ffffff;
       border-radius: 20px;
       font-size: 0.82rem;
       font-weight: 600;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
     }
 
+    /* Social Link Buttons */
     .links {
       display: flex;
-      gap: 12px;
-      margin-top: 12px;
+      gap: 10px;
+      margin-top: 14px;
       flex-wrap: wrap;
     }
 
     .links a {
-      color: var(--text);
+      color: #ffffff;
       text-decoration: none;
-      font-size: 0.88rem;
-      padding: 4px 10px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      transition: all 0.2s;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 8px;
+      transition: transform 0.2s, opacity 0.2s;
     }
 
     .links a:hover {
-      border-color: var(--accent);
-      color: #a5b4fc;
+      transform: translateY(-2px);
+      opacity: 0.9;
     }
 
+    .btn-github { background-color: #18181b; }
+    .btn-linkedin { background-color: #2563eb; }
+    .btn-scholar { background-color: #3b82f6; }
+    .btn-researchgate { background-color: #10b981; }
+
+    /* Nav Bar Styling */
     nav {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       overflow-x: auto;
       padding-bottom: 8px;
       margin-bottom: 24px;
+      justify-content: center;
     }
 
     nav a {
-      color: var(--text-muted);
+      color: #1e293b;
       text-decoration: none;
       font-size: 0.9rem;
+      font-weight: 600;
       white-space: nowrap;
-      padding: 6px 14px;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
+      padding: 8px 18px;
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.5);
       border-radius: 20px;
+      backdrop-filter: blur(8px);
       transition: all 0.2s;
     }
 
     nav a:hover {
-      color: var(--text);
-      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.7);
+      transform: translateY(-1px);
     }
 
+    /* Sections and Glass Cards */
     section {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 24px;
+      padding: 32px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       margin-bottom: 24px;
     }
 
     section h2 {
-      font-size: 1.3rem;
-      margin-bottom: 16px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 8px;
-      color: #ffffff;
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      padding-bottom: 10px;
+      color: #0f172a;
     }
 
     .grid-2 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 16px;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border);
-      padding: 16px;
-      border-radius: 10px;
-      margin-bottom: 12px;
+      background: rgba(255, 255, 255, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      padding: 18px;
+      border-radius: 14px;
+      margin-bottom: 14px;
     }
 
     .card:last-child {
@@ -176,13 +186,14 @@
 
     .card h3 {
       font-size: 1.05rem;
-      color: #ffffff;
+      color: #0f172a;
+      font-weight: 700;
       margin-bottom: 6px;
     }
 
     .card p, .card ul {
-      font-size: 0.9rem;
-      color: var(--text-muted);
+      font-size: 0.92rem;
+      color: #334155;
     }
 
     .card ul {
@@ -193,32 +204,26 @@
     .badge {
       display: inline-block;
       font-size: 0.75rem;
-      padding: 2px 8px;
-      border-radius: 4px;
-      background: rgba(99, 102, 241, 0.2);
-      color: #a5b4fc;
+      padding: 3px 10px;
+      border-radius: 12px;
+      background: #e0e7ff;
+      color: #3730a3;
+      font-weight: 700;
       margin-left: 6px;
     }
 
     .highlight-card {
-      border-left: 3px solid var(--accent);
+      border-left: 4px solid #4f46e5;
+      background: rgba(255, 255, 255, 0.55);
     }
 
-    .code-box {
-      font-family: monospace;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 2px 6px;
-      border-radius: 4px;
-      color: #a5b4fc;
-    }
-
-    @media (max-width: 600px) {
+    @media (max-width: 650px) {
       .profile-header {
         flex-direction: column;
         text-align: center;
       }
-      .links {
-        justify-content: center;
+      nav {
+        justify-content: flex-start;
       }
     }
   </style>
@@ -231,22 +236,21 @@
     
     <!-- Profile Header -->
     <header class="profile-header">
-      <!-- Image must be named image_2.png and uploaded to your GitHub repository -->
       <img alt="Maimuna Tasnim Nusaiba" class="profile-img" src="image_2.png" onerror="this.onerror=null; this.src='https://github.com/MTNusaiba.png';">
       <div class="profile-info">
         <h1>Maimuna Tasnim Nusaiba</h1>
         <p><strong>Department of Computer Science &amp; Engineering</strong>, Jahangirnagar University</p>
         <p>
           📍 Savar, Dhaka, Bangladesh | 📞 +8801750009402 (WhatsApp)<br>
-          ✉️ <a href="mailto:20220655000nusaiba@juniv.edu" style="color:#a5b4fc;">20220655000nusaiba@juniv.edu</a> | <a href="mailto:maimunajucse31@gmail.com" style="color:#a5b4fc;">maimunajucse31@gmail.com</a>
+          ✉️ <a href="mailto:20220655000nusaiba@juniv.edu" style="color:#1d4ed8;">20220655000nusaiba@juniv.edu</a> | <a href="mailto:maimunajucse31@gmail.com" style="color:#1d4ed8;">maimunajucse31@gmail.com</a>
         </p>
         <span class="domain-tag">∞ Domain Expansion: Unlimited Research</span>
         
         <div class="links">
-          <a href="https://github.com/MTNusaiba" target="_blank">GitHub</a>
-          <a href="https://www.linkedin.com/in/maimuna-tasnim-nusaiba-02b561377/" target="_blank">LinkedIn</a>
-          <a href="https://scholar.google.com/citations?user=1UvRDG0AAAAJ" target="_blank">Google Scholar</a>
-          <a href="https://www.researchgate.net/profile/Maimuna-Tasnim-Nusaiba" target="_blank">ResearchGate</a>
+          <a class="btn-github" href="https://github.com/MTNusaiba" target="_blank">GitHub</a>
+          <a class="btn-linkedin" href="https://www.linkedin.com/in/maimuna-tasnim-nusaiba-02b561377/" target="_blank">LinkedIn</a>
+          <a class="btn-scholar" href="https://scholar.google.com/citations?user=1UvRDG0AAAAJ" target="_blank">Google Scholar</a>
+          <a class="btn-researchgate" href="https://www.researchgate.net/profile/Maimuna-Tasnim-Nusaiba" target="_blank">ResearchGate</a>
         </div>
       </div>
     </header>
@@ -298,31 +302,31 @@
       <h2>Research Experience &amp; Publications</h2>
 
       <div class="card">
-        <a href="#" style="color:#ffffff; text-decoration:none; font-weight:600;">High-Tech Innovation and International Trade Policy: A Management Perspective</a>
+        <a href="#" style="color:#0f172a; text-decoration:none; font-weight:700;">High-Tech Innovation and International Trade Policy: A Management Perspective</a>
         <p>SS Shinwary, H Tasnim, <strong>MT Nusaiba</strong></p>
         <p><em>American Journal of Trade and Policy, 2026</em></p>
       </div>
 
       <div class="card">
-        <a href="#" style="color:#ffffff; text-decoration:none; font-weight:600;">Automated Robotic Pipelines for High-Throughput Tumor Genomic Screening and Diagnosis</a>
+        <a href="#" style="color:#0f172a; text-decoration:none; font-weight:700;">Automated Robotic Pipelines for High-Throughput Tumor Genomic Screening and Diagnosis</a>
         <p>K Rahman, <strong>MT Nusaiba</strong>, H Tasnim</p>
         <p><em>Robotics Xplore, 2025</em></p>
       </div>
 
       <div class="card">
-        <a href="#" style="color:#ffffff; text-decoration:none; font-weight:600;">AI and NLP in Social Good: Enhancing Emergency Response and Crisis Handling via Text Analytics</a>
+        <a href="#" style="color:#0f172a; text-decoration:none; font-weight:700;">AI and NLP in Social Good: Enhancing Emergency Response and Crisis Handling via Text Analytics</a>
         <p><strong>MT Nusaiba</strong>, K Devarapu, MA Jawad, H Tasnim</p>
         <p><em>NEXG AI Review of America, 2025</em></p>
       </div>
 
       <div class="card">
-        <h3 style="color:#ffffff;">Next-Generation AI for Breast and Prostate Cancer Diagnosis in Bangladesh</h3>
+        <h3>Next-Generation AI for Breast and Prostate Cancer Diagnosis in Bangladesh</h3>
         <p><strong>MT Nusaiba</strong> (Lead Researcher)</p>
         <p>Analyzing model pruning, quantization, and knowledge distillation to bridge execution disparities between deep learning architectures and edge hardware.</p>
       </div>
 
       <div class="card">
-        <h3 style="color:#ffffff;">Ethical Issues on Utilization of AI, Robotics and Automation Technologies</h3>
+        <h3>Ethical Issues on Utilization of AI, Robotics and Automation Technologies</h3>
         <p><strong>MT Nusaiba</strong> (Lead Researcher)</p>
         <p>Synthesizing multidisciplinary literature to establish framework relationships between machine learning deployments and digital governance.</p>
       </div>
@@ -347,10 +351,7 @@
         <h3>🤖 Official Campus Ambassador — FastRoboX 1.0 <span class="badge">Upcoming</span></h3>
         <p><strong>Organized by:</strong> IEEE BUBT Student Branch | BUBT Permanent Campus, Mirpur, Dhaka</p>
         <p style="margin-top: 8px;">
-          Appointed as Official Campus Ambassador for FastRoboX 1.0 — National Robotics &amp; Tech Carnival, representing Jahangirnagar University. 
-        </p>
-        <p style="margin-top: 6px;">
-          🎟️ <strong>Exclusive Referral Discount Code:</strong> <span class="code-box">FRA102672</span> (Use during registration for participant discounts).
+          Appointed as Official Campus Ambassador for FastRoboX 1.0 — National Robotics &amp; Tech Carnival, representing Jahangirnagar University.
         </p>
       </div>
 
@@ -359,9 +360,9 @@
         <h3>Competitive Robotics &amp; Campus Roles</h3>
         <ul>
           <li><strong>Campus Ambassador:</strong> FIRSO 2026 (Fibonacci International Robot &amp; STEM Olympiad)</li>
-          <li><strong>Competitor (JU CSE Robotics Team - LFR):</strong> IUT Techathlon Nationals &amp; Rover Summit 2026</li>
-          <li><strong>Competitor (JU CSE Robotics Team - LFR):</strong> IUBAT Tech Fest</li>
-          <li><strong>Competitor (JU CSE Robotics Team - LFR):</strong> East-West University Telecommunication &amp; Robotics Fest</li>
+          <li><strong>Competitor (JU_Innovators - LFR):</strong> IUT Techathlon Nationals &amp; Rover Summit 2026</li>
+          <li><strong>Competitor (JU_Innovators - LFR):</strong> IUBAT Tech Fest</li>
+          <li><strong>Competitor (JU_Innovators - LFR):</strong> East-West University Telecommunication &amp; Robotics Fest</li>
         </ul>
       </div>
     </section>
@@ -402,6 +403,52 @@
     </section>
 
   </div>
+
+  <script>
+    // Canvas background particle effect
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+
+    for (let i = 0; i < 40; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: Math.random() * 2 + 1,
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5,
+        alpha: Math.random() * 0.5 + 0.3
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
 
 </body>
 </html>
